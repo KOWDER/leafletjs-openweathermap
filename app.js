@@ -1,11 +1,15 @@
 // DOM objects
 const content = document.querySelector('.content');
 
+// import your own API Key
 let myKey = config.API_KEY
+
+// set view on default location (london)
 let map = L.map('map').setView([51.505, -0.09], 13);
+
 let marker;
 
-// init tile Layer
+// init map Layer
 L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     maxZoom: 10,
     minZoom: 4,
