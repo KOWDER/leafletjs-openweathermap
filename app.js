@@ -1,11 +1,16 @@
 // DOM objects
 const contentWeather = document.querySelector('.content-weather');
 
+// import your own API Key
 let myKey = config.API_KEY
+
+// set view on default location (london)
 let map = L.map('map').setView([51.505, -0.09], 13);
+
 let marker = L.marker([51.5, -0.09]).addTo(map)
 
-// init tile Layer
+
+// init map Layer
 L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
     maxZoom: 10,
     minZoom: 4,
@@ -75,7 +80,6 @@ function onMapClick(e) {
     .catch(err => console.log('error', err))
 }
 
-
 function onWindowLoad(e) {
   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=51.5&lon=-0.09&units=metric&APPID=${myKey}`)
   .then(res => res.json())
@@ -86,3 +90,4 @@ function onWindowLoad(e) {
 
 window.addEventListener('load', onWindowLoad);
 map.addEventListener('click', onMapClick);
+
