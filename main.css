@@ -6,69 +6,69 @@
 
 body {
   font-family: 'Roboto', 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
-  width: 90%;
-  margin: 0 auto;
-}
-
-header {
   width: 100%;
-  height: 100px;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-header h1 {
-  color: #333;
-}
-
-.main {
-  height: calc(100vh - 100px);
-  display: flex;
-
+  background-color: #f4f4f4;
 }
 
 #map {
-  width: 60%;
-  height: 90%;
-  border: 2px solid rgba(58, 58, 58, 0.4);
+  width: 70%;
+  height: 100%;
 }
 
 .content {
-  width: 40%;
-  height: 90%;
-}
-
-.content div {
-  width: 100%;
-  height: 100px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content div img {
-  height: 80%;
-}
-
-.content ul {
-  width: 100%;
-  list-style: none;
-  font-size: 1.2em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  height: 100%;
+  border-right: 1px solid rgba(133, 133, 133, 0.8);
+  padding: 2.5em 2.5em;
   color: #333;
+  font-size: 0.9vw;
 }
 
-.content ul li {
-  width: 90%;
-  margin: 0.5em 0;
-  padding: 1em;
-  box-shadow: 1px 1px 6px 1px rgba(58, 58, 58, 0.4)
+.content-weather {
+  list-style: none;
+}
+
+.content-weather li {
+  margin: 25px 0;
+  font-size: 1.2vw;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.content-weather li h5 {
+  font-size: 0.8vw;
+  font-weight: 400;
+  font-style: italic;
+  color: rgb(51, 51, 51, 0.8);
+}
+
+.content-header h1 {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 3vw;
+  color: #0252B0;
+  margin-bottom: 5px;
+}
+
+.content a {
+  text-decoration: none;
+  color: #0252B0;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.content-footer p {
+  margin: 10px 0;
 }
