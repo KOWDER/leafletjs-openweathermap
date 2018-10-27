@@ -37,16 +37,16 @@ function showData(obj) {
     ${Math.round(obj.main.temp)} °C
   </li>
   <li>
+    <h5>Wind Speed</h5>
+    ${parseInt(obj.wind.speed * 3)} km/h
+  </li>
+  <li>
     <h5>Humidity</h5>
     ${obj.main.humidity} %
   </li>
   <li>
     <h5>Pressure</h5>
     ${obj.main.pressure} atm
-  </li>
-  <li>
-    <h5>Wind Speed</h5>
-    ${parseInt(obj.wind.speed * 3)} km/h
   </li>
   <li>
     <h5>Sunrise</h5>
