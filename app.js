@@ -25,16 +25,18 @@ function showData(obj) {
 
   div.outerHTML = `<div class="content-weather">
   <li>
-    <h5>Location</h5>
-    ${obj.name}, ${obj.sys.country}
-  </li>
-  <li>
+    <div class="weather-graph">
+      <div>
+        <img src="./assets/${obj.weather[0].icon}.svg"/>
+      </div>
+      <span>${Math.round(obj.main.temp)}°C</span>
+    </div>
     <h5>Weather</h5>
     ${obj.weather[0].description}
   </li>
   <li>
-    <h5>Temperature</h5>
-    ${Math.round(obj.main.temp)} °C
+    <h5>Location</h5>
+    ${obj.name}, ${obj.sys.country}
   </li>
   <li>
     <h5>Wind Speed</h5>

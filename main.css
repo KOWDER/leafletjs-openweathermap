@@ -57,7 +57,7 @@ body {
 .content-header h1 {
   font-weight: 400;
   font-style: italic;
-  font-size: 3vw;
+  font-size: 1.5vw;
   color: #0252B0;
   margin-bottom: 5px;
 }
@@ -71,4 +71,22 @@ body {
 
 .content-footer p {
   margin: 10px 0;
+}
+
+.weather-graph {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.weather-graph div {
+  width: 25%;
+}
+
+.weather-graph span {
+  font-size: 4vw;
+  color: #0252B0;
+  font-style: italic;
 }
