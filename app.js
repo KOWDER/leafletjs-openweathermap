@@ -52,11 +52,11 @@ function showData(obj) {
   </li>
   <li>
     <h5>Sunrise</h5>
-    ${new Date(obj.sys.sunrise * 1000).toTimeString()}
+    ${new Date(obj.sys.sunrise * 1000).toTimeString().substring(0, 8)}
   </li>
   <li>
     <h5>Sunset</h5>
-    ${new Date(obj.sys.sunset * 1000).toTimeString()}
+    ${new Date(obj.sys.sunset * 1000).toTimeString().substring(0, 8)}
   </li>
 </div>`
 }
