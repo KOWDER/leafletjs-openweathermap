@@ -1,8 +1,18 @@
 // DOM objects
 const contentWeather = document.querySelector('.content-weather');
 
+// Algolia autocomplete
+const fixedOptions = places({
+  appId: config.ALGOLIA_APP_ID,
+  apiKey: config.ALGOLIA_API_KEY,
+  container: document.getElementById('place-input')
+});
+
+
+
+
 // import your own API Key
-let myKey = config.API_KEY
+let myKey = config.OWM_API_KEY
 
 // set view on default location (london)
 let map = L.map('map').setView([51.505, -0.09], 13);
