@@ -125,7 +125,7 @@ body {
 }
 
 
-@media all and (max-width: 980px) {
+@media all and (max-width: 1180px) {
   
   .container {
     flex-direction: column;
@@ -140,7 +140,7 @@ body {
   }
 
   #map {
-    min-height: 80vh;
+    min-height: 50vh;
     margin: 1em;
   }
 
@@ -181,4 +181,33 @@ body {
   .burger {
     display: block;
   }
+}
+
+
+
+
+
+/**************** ALGOLIA SEARCH BOX *********************/
+.algolia-places {
+  width: 70%;
+}
+
+.content-search {
+  display: flex;
+  margin-top: 10px;
+}
+
+
+.search-btn {
+  margin: 0 0 0 5px;
+  max-width: 100px;
+  width: 20%;
+  cursor: pointer;
+  background: #0252B0;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }

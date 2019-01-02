@@ -1,14 +1,17 @@
 // DOM objects
 const contentWeather = document.querySelector('.content-weather');
+const placesInput = document.getElementById('places-input');
+const placesBtn = document.getElementById('places-btn');
 
 // Algolia autocomplete
-const fixedOptions = places({
+const placesAutocomplete = places({
   appId: config.ALGOLIA_APP_ID,
   apiKey: config.ALGOLIA_API_KEY,
-  container: document.getElementById('place-input')
+  container: placesInput,
+  language: 'en',
+  type: 'city',
+  aroundLatLngViaIP: false
 });
-
-
 
 
 // import your own API Key
@@ -100,6 +103,19 @@ function onWindowLoad(e) {
   .catch(err => console.log('error', err))
 }
 
+function onEnterKeypress(e) {
+  e.preventDefault()
+  let arr = e.target.value.split(',')
+  console.log((/[^\d]*/.exec(arr[0])).join('').trim())
+}
+
+function onSearch(e) {
+  e.preventDefault()
+  let arr = placesInput.value.split(',')
+  console.log((/[^\d]*/.exec(arr[0])).join('').trim())
+}
+
 window.addEventListener('load', onWindowLoad);
 map.addEventListener('click', onMapClick);
-
+placesInput.addEventListener('keyup', onEnterKeypress)
+placesBtn.addEventListener('click', onSearch)
