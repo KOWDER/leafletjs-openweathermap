@@ -30,6 +30,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
+
+
 // print data
 function showData(obj) {
   contentWeather.textContent = ''
@@ -79,7 +81,6 @@ function showData(obj) {
 function onMapClick(e) {
   const lat = e.latlng.lat
   const lng = e.latlng.lng
-  let weather;
 
   if (marker) {
     map.removeLayer(marker)
@@ -95,6 +96,9 @@ function onMapClick(e) {
     .catch(err => console.log('error', err))
 }
 
+
+
+// initial window load
 function onWindowLoad(e) {
   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=51.5&lon=-0.09&units=metric&APPID=${myKey}`)
   .then(res => res.json())
@@ -103,18 +107,61 @@ function onWindowLoad(e) {
   .catch(err => console.log('error', err))
 }
 
-function onEnterKeypress(e) {
-  e.preventDefault()
-  let arr = e.target.value.split(',')
-  console.log((/[^\d]*/.exec(arr[0])).join('').trim())
+
+
+// put marker on map after search input sumbittion
+function showMapCoord(lat, lng) {
+  if (marker) {
+    map.removeLayer(marker)
+    marker = L.marker([lat, lng]).addTo(map)
+  } else {
+    marker = L.marker([lat, lng]).addTo(map)
+  }
+
+  let coords = [ marker.getLatLng() ]
+  let markerBounds = L.latLngBounds(coords)
+  map.fitBounds(markerBounds);
 }
 
+
+// fetch weather data by city name from searhc input
+function fetchByCityName(placeName) {
+  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${placeName}&APPID=${myKey}`)
+  .then(res => res.json())
+  .then(data => weather = data)
+  .then(weather => {
+    showData(weather)
+    showMapCoord(weather.coord.lat, weather.coord.lon)
+  })
+  .catch(err => console.log('error', err))
+
+}
+
+
+// SEARCHBOX EVENT - trim data of search input and keep only city name
+function onEnterKeypress(e) {
+  if (e.keyCode === 13) {
+  e.preventDefault()
+  let arr = e.target.value.split(',')
+  let city = (/[^\d]*/.exec(arr[0])).join('').trim()
+  fetchByCityName(city)
+  }
+}
+
+
+// BUTTON EVENT - trim data of search input and keep only city name
 function onSearch(e) {
   e.preventDefault()
   let arr = placesInput.value.split(',')
-  console.log((/[^\d]*/.exec(arr[0])).join('').trim())
+  let city = (/[^\d]*/.exec(arr[0])).join('').trim()
+  fetchByCityName(city)
 }
 
+
+
+
+
+// EVENT LISTENERS
 window.addEventListener('load', onWindowLoad);
 map.addEventListener('click', onMapClick);
 placesInput.addEventListener('keyup', onEnterKeypress)
