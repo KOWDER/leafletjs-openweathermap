@@ -34,6 +34,7 @@ body {
   font-size: 0.9vw;
   transition: left 1s ease-in;
   z-index: 99;
+  overflow-y: scroll;
 }
 
 .content-weather {
@@ -137,10 +138,11 @@ body {
     border-top: 1px solid rgba(133, 133, 133, 0.8);
     font-size: 14px;
     width: 100%;
+    overflow-y: visible;
   }
 
   #map {
-    min-height: 50vh;
+    min-height: 40vh;
     margin: 1em;
   }
 
