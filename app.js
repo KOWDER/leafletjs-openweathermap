@@ -79,6 +79,10 @@ function showData(obj) {
 
 // get position of click to set a new marker and display position
 function onMapClick(e) {
+
+  //temporary fix for searchbar value popping (?)
+  placesInput.value = ''
+
   const lat = e.latlng.lat
   const lng = e.latlng.lng
 
@@ -126,12 +130,13 @@ function showMapCoord(lat, lng) {
 
 // fetch weather data by city name from searhc input
 function fetchByCityName(placeName) {
-  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${placeName}&APPID=${myKey}`)
+  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${placeName}&units=metric&APPID=${myKey}`)
   .then(res => res.json())
   .then(data => weather = data)
   .then(weather => {
     showData(weather)
     showMapCoord(weather.coord.lat, weather.coord.lon)
+    placesInput.value = ''
   })
   .catch(err => console.log('error', err))
 
