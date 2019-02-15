@@ -5,8 +5,8 @@ const placesBtn = document.getElementById('places-btn');
 
 // Algolia autocomplete
 const placesAutocomplete = places({
-  appId: process.env.ALGOLIA_APP_ID,//config.ALGOLIA_APP_ID,
-  apiKey: process.env.ALGOLIA_APP_KEY,//config.ALGOLIA_API_KEY,
+  appId: config.ALGOLIA_APP_ID,
+  apiKey: config.ALGOLIA_API_KEY,
   container: placesInput,
   language: 'en',
   type: 'city',
@@ -15,7 +15,7 @@ const placesAutocomplete = places({
 
 
 // import your own API Key
-let myKey = process.env.OWM_API_KEY;//config.OWM_API_KEY
+let myKey = config.OWM_API_KEY
 
 // set view on default location (london)
 let map = L.map('map').setView([51.505, -0.09], 13);
